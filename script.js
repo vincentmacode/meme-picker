@@ -6,17 +6,20 @@ function getEmotionsArray(cats){
     const emotionsArray = []
     for (let cat of cats){
         for (let emotion of cat.emotionTags){
-            emotionsArray.push(emotion)
+            // sorting out repeated arrays
+            if (!emotionsArray.includes(emotion)){
+                emotionsArray.push(emotion)
+            }
         }
     }
     return emotionsArray
 }
 
 
-/*Rendering the string to the 'emotion-radios' div*/
-function renderEmotionsRadios(c){
+//Rendering the string to the 'emotion-radios' div
+function renderEmotionsRadios(cats){
     let radioItems = ''
-    const emotions = getEmotionsArray(c)
+    const emotions = getEmotionsArray(cats)
     for (let emotion of emotions){
         radioItems += `<p>${emotion}</p>`
     }
